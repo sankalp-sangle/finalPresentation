@@ -1,6 +1,6 @@
 test:
     script:
         - apt-get update -qy
-        - apt-get install -y python-dev python-pip
-        - pip install numpy
-        - python -m unittest test.py
+        - apt-get install -y python3-dev python3-pip
+        - pip3 install numpy
+        - python3 -m unittest test.py
