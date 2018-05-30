@@ -1,0 +1,4 @@
+test:
+    script:
+        - pip install numpy
+        - python -m unittest test.py
