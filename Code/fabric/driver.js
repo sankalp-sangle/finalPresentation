@@ -35,10 +35,10 @@ const driver = async () => {
     await stellarUtility.changeTrust(pairBuyer,"10000",ZFCasset);
     await stellarUtility.sendAsset(pairIssuer,pairBuyer,'1000',ZFCasset);
 
-    console.log("Locking the Issuer account");
-    await stellarUtility.lockAccount(pairIssuer);
-
-    await stellarUtility.transact(pairSeller, pairEscrow, pairBuyer, ZFCasset, "60", "10000");
+    //console.log("Locking the Issuer account");
+    //await stellarUtility.lockAccount(pairIssuer);
+    
+    //await stellarUtility.transact(pairSeller, pairEscrow, pairBuyer, ZFCasset, "60", "10000");
 
 }
 
