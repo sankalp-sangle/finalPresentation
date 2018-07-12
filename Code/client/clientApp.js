@@ -1,5 +1,6 @@
 const fs = require('fs')
 const ipfs = require('ipfs-api')({host: "localhost", port: 5001, protocol: "http"});
+
 var express = require("express"),
     bodyParser = require("body-parser"),
     app = express();
@@ -21,16 +22,13 @@ app.get("/", function(req,res){
 
 var elasticsearch = require('elasticsearch');
 
-var client = new elasticsearch.Client({
+var client = new elasticsearch.Client({ // Setting up a client object to interact with elasticsearch server at 9200.
   host: 'localhost:9200',
   log: 'trace'
 });
 
-app.post("/datascript", async function(req,res){
+app.post("/datascript", async function(req,res){ // a function to post IPFS Hash along with keywords to elastic search
     
-    // let { idcount } = await client.count({
-    //     index: 'user_data'
-    //   });
     let count = {};
 
     try
@@ -65,7 +63,7 @@ app.post("/datascript", async function(req,res){
     res.redirect("/");
 })
 
-app.post("/IPFSscript", function(req,response){
+app.post("/IPFSscript", function(req,response){ // A function to add file at specified address to your IPFS and display hash along with suggested keywords
         
     let cont = fs.readFileSync(req.body.FileAddress);
         
@@ -93,7 +91,7 @@ app.post("/IPFSscript", function(req,response){
        
 })
 
-app.post("/searchscript", function(req, response){
+app.post("/searchscript", function(req, response){ // A function to display search results for a keyword
 client.search({
     index: 'myData',
     q: 'Keywords:' + req.body.Keyword
@@ -103,7 +101,7 @@ client.search({
   });
 })
 
-app.post("/decodescript", function(req,response){
+app.post("/decodescript", function(req,response){ // A function to display the file using IPFS.
         
     ipfsPath = req.body.decodehash
 
