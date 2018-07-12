@@ -1,0 +1,13 @@
+Button Generate IPFS Hash : Adds file at specified address to IPFS and then displays IPFS Hash
+of file along with list of suggested keywords.
+
+Button Submit to elastic search : Pushes an entry of the file hash along with list of keywords
+associated with it to your local elastic search engine.
+
+Button Submit : Searches your local elastic search for a hash corresponding to given keyword 
+and displays results of the search.
+
+Button Display file corresponding to hash : Fetches file corresponding to the hash over the IPFS Network
+and displays its contents.
+
+Button Go to the chat room! : Opens up a window containing the chat client.

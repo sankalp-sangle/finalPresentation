@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <title>Submit Record</title>
+    <script type="text/javascript" src="../search.js"></script>
+</head>
+<body>
+
+    
+
+   
+
+    <form action="/IPFSscript" method="POST">
+        <label for="File Address">FileAddress</label>
+        <input type="text" id="File Address" name="FileAddress">
+        <br>
+        <button type="submit" >Generate IPFS Hash</button>
+    </form>
+    <br>
+    <label for = "IPFSHash">IPFS Hash</label> =
+       <%- result %>
+    <br>
+    <br>
+    <label for="Suggested Keywords">Suggested Keywords for file</label> =
+    <%- keyword %>
+    <br>
+    <br>
+    <br>
+
+    <form action="/datascript" method="POST">
+        <label for="IPFS Hash">IPFS Hash</label>
+        <input type="text" id="IPFS Hash" name="IPFS Hash">
+
+        <label for="Keywords">Keywords</label>
+        <input type="text" id="Keywords" name="Keywords">
+
+
+        <button type="submit" >Submit to elastic search</button>
+    
+    </form>
+
+    <br>
+    <br>
+    <br>
+
+    <form action="/searchscript" method="POST">
+        <label for="Keyword">Keyword to search</label>
+        <input type="text" id="Keyword" name="Keyword">
+        <button type="submit" >Submit</button>
+        <br>
+        <br>
+
+        <label for="Result">Results of search : </label>
+
+        <% for(var i=0;i<hits.length;i++){ %>
+            <br> <%- hits[i]._source['IPFS Hash'] %> <br>
+            <% } %>
+
+       
+    </form>
+
+    <br>
+    <br>
+
+    <form action="/decodescript" method="POST">
+        
+        <label for="decodehash" id="decode" name="decode">Enter IPFS Hash to decode</label>
+        <input type="text" id="decodehash" name="decodehash">
+        <button type="submit">Display file corresponding to hash</button>
+        <label for="Result">File contents : </label>
+        <%- filecontent %>
+    </form>
+
+    <br>
+    <br>
+    <button onclick="myFunction()">Go to the chat room!</button>
+
+<script>
+function myFunction() {
+    window.open("http://192.168.137.31:3000");
+}
+</script>
+
+</body>
+</html>
