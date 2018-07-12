@@ -9,8 +9,8 @@ NodeJS dependencies : stellar-sdk
                       
 To install these, run the following commands from a terminal inside the fabric directory :
 
-    $ chmod 755 installClientSideNodeDependencies.sh
-    $ ./installClientSideNodeDependencies.sh
+    $ chmod 755 installFabricSideNodeDependencies.sh
+    $ ./installFabricSideNodeDependencies.sh
 
 Other requirements :  Elastic Search (Download and Install from https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
 

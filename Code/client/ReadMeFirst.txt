@@ -17,7 +17,9 @@ To install these, run the following commands from a terminal inside the client d
                      $ chmod 755 installClientSideNodeDependencies.sh
                      $ ./installClientSideNodeDependencies.sh
 
-
+IMPORTANT : IP configuration.
+            In views directory, in the file form.ejs, pass IP address of fabric as argument to window.open() function.
+            
 How to run the application : 1. Open up a terminal.
                              
                              2. Run the following commands in sequential order      
