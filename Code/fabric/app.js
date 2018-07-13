@@ -76,7 +76,7 @@ var elasticsearch = require('elasticsearch');
 let anoncnt = 1;
 
 var client = new elasticsearch.Client({
-	host: '10.4.100.238:9200',
+	host: 'localhost:9200',
 	log: 'trace'
 });
 
@@ -84,7 +84,7 @@ var client = new elasticsearch.Client({
 async function getPossibleUserNames(keyword, needbuyer) { 
 
 	var ans = await client.search({
-		index: 'user_data',
+		index: 'fabric_data',
 		q: 'Keywords:' + keyword
 	});
 
@@ -119,7 +119,7 @@ async function pushToElasticSearch(fileData) {
 	try
 	{
 		count = await client.count({
-		index: 'user_data'
+		index: 'fabric_data'
 		});
 	}
 	
@@ -130,8 +130,8 @@ async function pushToElasticSearch(fileData) {
 	}
 
 	var obj = {
-		index: 'user_data',
-		type: 'user',
+		index: 'fabric_data',
+		type: 'fabric_data_details',
 		id: count.count + 1
 	};
 
