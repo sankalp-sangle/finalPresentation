@@ -11,6 +11,8 @@ NodeJS dependencies required for client side :
     retext
     retext-keywords
     express
+    elasticsearch
+    ejs
 
 To install these, run the following commands from a terminal inside the client directory :
                      

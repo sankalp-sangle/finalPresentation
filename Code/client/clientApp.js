@@ -42,7 +42,7 @@ app.post("/datascript", async function(req,res) { // a function to post IPFS Has
     try
     {
         count = await client.count({ //Dynamically fetch id of new entry to be added as (currentcount + 1)
-        index: 'myData'
+        index: 'my_data'
         });
     }
     catch(err)
@@ -52,8 +52,8 @@ app.post("/datascript", async function(req,res) { // a function to post IPFS Has
     }
 
     var obj = { // creating an object to be sent to elasticsearch under index myData. Object body will be body of request
-        index: 'myData',
-        type: 'myDataDetails',
+        index: 'my_data',
+        type: 'my_data_details',
         id: count.count + 1
       };
     
