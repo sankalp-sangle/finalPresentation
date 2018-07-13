@@ -42,20 +42,19 @@ for(let i=0;i<200;i++)
 {
 	gparamList.push(i%10);
 }
-
+//console.log(historyList);
 function PriceEngine(needbuyer, needseller, gParam) //Returns the optimal price for 
 {
 
-	var needb=parseFloat(needbuyer);
-	var needs=parseFloat(needseller);
+	var needb= parseFloat(needbuyer);
+	var needs= parseFloat(needseller);
 
 	//Need, Unique, ownerValue, Demand, Richness, Applicability, repeatedPurchase, gparam
-	let q = 0.97
+	let q = 0.98;
 	let nHist = 200
 
 	let buyer = new Buyer(historyList, nHist, q, gparamList, needb, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, gParam),	
-		seller = new Seller(historyList, nHist, q, gparamList, needs, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, gParam);
-	
+		seller = new Seller(historyList, nHist, q, gparamList, needs, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, gParam);	
 	return Engine.transact_price(buyer, seller, historyList, gparamList).toFixed(2);
 }
 
@@ -98,16 +97,14 @@ async function getPossibleUserNames(keyword, needbuyer) {
 	}
 
 	var users = matches.toArray();
-	console.log(users);
-	console.log("****");
+
 	for(var i=0;i<users.length;i++)
 	{
 		var name = users[i];
-
 		if(sellerNeed[name] !== undefined && sellerNeed[name][keyword] !== undefined)
 		{
 			var needseller = sellerNeed[name][keyword];
-			searchResults+= users[i] + ': ' +	PriceEngine(needbuyer, needseller, keytonum[keyword]) + ' ';
+			searchResults += users[i] + ': ' +	PriceEngine(needbuyer, needseller, keytonum[keyword]) + ' ';
 		}
 	}
 
@@ -186,6 +183,7 @@ var publickey = {};
 var secretkey = {};
 var filehash = {};
 var keytonum = {};
+var buyerneed = {};
 
 users["Anonymous"]=null
 
@@ -300,7 +298,6 @@ io.sockets.on('connection', (socket) => {
 				for(var i=2;i<message.length;i++)
 				{
 					var keyword = message[i];
-					var pair1= Pair([socket.username, keyword]);
 					var name = socket.username;
 					sellerNeed[name] = {};
 					sellerNeed[name][keyword] = need;
@@ -331,6 +328,8 @@ io.sockets.on('connection', (socket) => {
 				var keyword = message[2];
 
 				var usernames= await getPossibleUserNames(keyword, need);
+
+				buyerneed[socket.username]=parseFloat(need);
 
 				users[socket.username].emit('new_message', {
 					message: "These usernames have the required information:\n" + usernames,
@@ -564,9 +563,7 @@ io.sockets.on('connection', (socket) => {
 
 					var intMoney = parseInt(money);
 
-					console.log(intMoney);
-
-					saveRecord(money, Seller.gparam,)
+					saveRecord(intMoney, Seller.gparam, historyList, gparamList);
 
 					delete money_Acceptor[key];
 					delete data_Acceptor[inprocess[key]];
