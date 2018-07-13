@@ -1,7 +1,7 @@
 // Initial requirements
 let Stellar				= require('stellar-sdk'); // Stellar JS library
 let request				= require('request-promise'); // Request library
-let stellarUtility 		= require("./stellarUtilities.js"); // File containing Stellar utility functions for managing API
+let stellarUtility 		= require("./StellarUtilities.js"); // File containing Stellar utility functions for managing API
 let Set					= require("collections/set"); 
 let Engine 			 	= require('./engine.js');
 let Buyer				= require('./Buyer.js');
@@ -76,7 +76,7 @@ var elasticsearch = require('elasticsearch');
 let anoncnt = 1;
 
 var client = new elasticsearch.Client({
-	host: 'localhost:9200',
+	host: '10.4.100.238:9200',
 	log: 'trace'
 });
 
