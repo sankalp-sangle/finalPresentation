@@ -6,6 +6,8 @@ NodeJS dependencies : stellar-sdk
                       winston
                       mysql
                       socket.io
+                      elasticsearch
+                      ejs
                       
 To install these, run the following commands from a terminal inside the fabric directory :
 

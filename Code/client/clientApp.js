@@ -51,7 +51,7 @@ app.post("/datascript", async function(req,res) { // a function to post IPFS Has
         count.count = 0;
     }
 
-    var obj = { // creating an object to be sent to elasticsearch under index myData. Object body will be body of request
+    var obj = { // creating an object to be sent to elasticsearch under index my_data. Object body will be body of request
         index: 'my_data',
         type: 'my_data_details',
         id: count.count + 1
@@ -101,7 +101,7 @@ app.post("/IPFSscript", function(req,response) { // A function to add file at sp
 
 app.post("/searchscript", function(req, response) { // A function to display search results for a keyword
     client.search({
-        index: 'myData',
+        index: 'my_data',
         q: 'Keywords:' + req.body.Keyword
     }, function (err, resp) {
         if(err) throw err;
