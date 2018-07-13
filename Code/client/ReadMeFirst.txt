@@ -1,7 +1,8 @@
 Requirements :       IPFS Daemon (Download and Install from https://ipfs.io/docs/install)
                      
                      Elastic Search (Download and Install from https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html)
-
+                     
+                     Java JDK (later than Java8)
                      NodeJS and npm
 
 NodeJS dependencies required for client side :
@@ -26,6 +27,7 @@ How to run the application : 1. Open up a terminal.
                              
                              2. Run the following commands in sequential order      
                                 
+                                To initialise IPFS :                   $ ipfs init
                                 To start an ipfs server :              $ ipfs daemon
                                 To start an elasticsearch instance :   $ yourElasticSearchDirectory/bin/elasticsearch
                                 To start the client side application : $ node clientApp.js
